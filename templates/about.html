@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300&display=swap');
+            @import url('https://db.onlinewebfonts.com/c/01173b246d9d9ea808ea75a26b3b61bb?family=CircularSpotifyTxT-Black');
+        </style>
+        <link rel="stylesheet" type="text/css" href='static/main.css'>
+    </head>
+    <body class="left-margin">
+        {% extends 'base.html' %}
+
+        {% block title %}About{% endblock %}
+        {% block content %}
+        <br>
+        <h2>About Spotify Playlist Generator</h2>
+        <p>Welcome to Playlist Generator, your ultimate destination for discovering new music and creating personalized playlists based on your favorite artists!<br>
+            Our platform utilizes the Spotify API along with other cutting-edge technologies to enhance your music listening experience and help you explore a world of melodies.</p>
+        <h2>What does Spotify Playlist Generator do?</h2>
+        <p>At Playlist Generator, we understand the frustration of running out of music options by your favorite artist and not knowing which other artists share similar vibes.<br>
+            Our mission is to solve this problem by generating curated playlists for you, filled with tracks by artists who are similar to your favorite ones.<br> 
+            Whether you're a music enthusiast seeking fresh tunes or an artist searching for inspiration, Playlist Generator is the perfect tool for you.</p>
+        <h2>Features and Functionality: </h2>
+        <ol>
+            <li><h4>Discover New Artists: </h4><p> Input the name of your favorite artist, and Playlist Generator will use the Spotify API to find similar artists with a similar musical style, genre, or vibe.<br> This ensures you always have a steady stream of music that resonates with your preferences.</p></li>
+            <li><h4>Personalized Playlists: </h4><p> Our platform allows you to create personalized playlists based on the artists you love.<br>Easily compile your favorite tracks and explore new ones to keep your playlist fresh and exciting.</p></li>
+            <li><h4>User Accounts and Saved Playlists: </h4><p>To make your experience even more seamless, we provide user account functionality.<br>Create an account and log in to save your favorite playlists. You can access them at any time, from any device.</p></li>
+            <li><h4>Lyrics and Insights: </h4><p>We have integrated the Genius API to provide you with lyrics and insights into the songs you listen to.<br>Dive deeper into the music you love and gain a deeper understanding of the artists' work.</p></li>
+            <li><h4>MP3 Downloads from YouTube</h4><p> Explore the option to download MP3 versions of your favorite songs directly from YouTube.<br>Enjoy offline listening whenever and wherever you want.</p></li>
+        </ol>
+        <h2>Technologies and Tools Used: </h2>
+        <ul>
+            <li><h4>Python: </h4><p>Our backend is powered by Python, enabling efficient data processing and API integrations</p></li>
+            <li><h4>PythonAnywhere: </h4><p>We deploy our application on PythonAnywhere, ensuring it's accessible and functional at all times.</p></li>
+            <li><h4>HTML/CSS: </h4><p>The frontend of Playlist Generator is designed using HTML and CSS, providing a sleek and user-friendly interface.</p></li>
+            <li><h4>SQLite: </h4><p>To store user account information and playlist data securely, we utilize SQLite, a lightweight and efficient database management system.</p></li>
+            <li><h4>Spotify API: </h4><p>We leverage the Spotify API to access an extensive library of music and artist data for playlist generation.</p></li>
+            <li><h4>Genius API: </h4><p>The Genius API enhances the user experience by providing song lyrics and insights.</p></li>
+            <li><h4>Flask: </h4><p>Our web application is built on the Flask framework, ensuring smooth navigation and functionality.</p></li>
+        </ul>
+        <h5>Join Playlist Generator today and let the music discovery begin! Create playlists that resonate with your soul and expand your musical horizons.<br>Whether you're a casual listener or a die-hard music enthusiast, Playlist Generator has something special for everyone.<br>Let the melodies flow and start your musical journey with us. Happy listening!</h5>
+        <br>
+        {% endblock %}
+    </body>
+</html>

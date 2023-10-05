@@ -1,0 +1,172 @@
+body {
+  font-family: "CircularSpotifyTxT-Black", 'Rajdhani', sans-serif;
+  background: #191414;
+  color: #333333;
+  margin-top: 5rem;
+}
+
+h1{
+  font-size:600%;
+  text-transform:uppercase;
+  color: #ffffff;
+  font-family: "CircularSpotifyTxT-Black", 'Rajdhani', sans-serif;
+  text-align: center;
+}
+.inc250{
+  font-size:250%;
+  
+}
+.boxfo {
+  color: #1DB954;
+  font-size:200%;
+}
+
+.pnlabel {
+  color: #1DB954;
+  font-size:100%;
+}
+.rmspace {
+  margin-bottom: 0px; /* Adjust this value as needed */
+}
+.addspace {
+  margin-bottom: 25px; /* Adjust this value as needed */
+}
+.but {
+  background-color: #1DB954;
+  color:#ffffff;
+  border-radius: 30px;
+}
+
+h2, h3, h5, h6 {
+  font-family: "CircularSpotifyTxT-Black", 'Rajdhani', sans-serif;
+  color: #1DB954;
+}
+
+h4 {
+  font-family: "CircularSpotifyTxT-Black", 'Rajdhani', sans-serif;
+  color:#aaaaaa
+}
+
+li {
+  color:#aaaaaa
+}
+
+p {
+  font-family: "CircularSpotifyTxT-Black", 'Rajdhani', sans-serif;
+  color:#ffffff;
+}
+
+.bg-steel {
+  background-color: #1DB954;
+}
+
+.site-header .navbar-nav .nav-link {
+  color: #777777;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+  color: #ffffff;
+}
+
+.site-header .navbar-nav .nav-link.active {
+  font-weight: 500;
+}
+
+.content-section {
+  background: #ffffff;
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+.article-title {
+  color: #444444;
+}
+
+a.article-title:hover {
+  color: #428bca;
+  text-decoration: none;
+}
+
+.article-content {
+  white-space: pre-line;
+}
+
+.article-img {
+  height: 65px;
+  width: 65px;
+  margin-right: 16px;
+}
+
+.article-metadata {
+  padding-bottom: 1px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #e3e3e3
+}
+
+.article-metadata a:hover {
+  color: #333;
+  text-decoration: none;
+}
+
+.article-svg {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+}
+
+.account-img {
+  height: 125px;
+  width: 125px;
+  margin-right: 20px;
+  margin-bottom: 16px;
+}
+
+.account-heading {
+  font-size: 2.5rem;
+}
+
+.center-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+}
+
+.frame-container {
+  position: relative;
+}
+
+.iframe-button {
+  display: none;
+  position: absolute;
+  top: 8%;
+  left: 90%;
+}
+
+/* Only show the button when the parent is hovered: */
+.frame-container:hover .iframe-button {
+  display: initial;
+}
+/* 
+.frame-container {
+  position: relative;
+} */
+.top-margin {
+  margin-top: 20px;
+}
+
+.top-bottom-margin {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.left-margin {
+  margin-left: 20px;
+}
+
+.left-right-margin {
+  margin-left: 10px;
+  margin-right: 10px;
+}

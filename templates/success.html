@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300&display=swap');
+        @import url('https://db.onlinewebfonts.com/c/01173b246d9d9ea808ea75a26b3b61bb?family=CircularSpotifyTxT-Black');
+    </style>
+    <link rel="stylesheet" type="text/css" href='static/main.css'>
+    <title>Album Successfully Created</title>
+</head>
+<body class="left-right-margin">
+  {% extends 'base.html' %}
+
+  {% block title %}Success{% endblock %}
+  {% block content %}
+<br>
+<h1>Your album has been created!</h1>
+<h2 class="inc250"> You can now see your playlist in your Spotify account. </h2>
+<a class="inc250" href="https://open.spotify.com/playlist/{{playlist_id}}"> View Playlist in Spotify <img src="img\spotifyLogo.png"> </a><br>
+<a class="btn btn-primary inc250 but top-bottom-margin" href="/spotify-generator">Generate Another Playlist</a>
+<button class="btn btn-primary inc250 but top-bottom-margin" id="downloadButton">Download Songs</button>
+
+    <script>
+        document.querySelector("form").onsubmit = function(e) {
+
+            //e.preventDefault();
+
+            let formData = new FormData();
+            let artist = document.querySelector("input[name=artist]").value;
+            let username = document.querySelector("input[name=username]").value;
+            let playlist = document.querySelector("input[name=playlist]").value;
+
+            formData.append("artist", artist);
+            formData.append("username", username);
+            formData.append("playlist", playlist);
+            fetch("/spotify-generator", {
+                method: "POST",
+                body: formData
+            })
+            .then(function(response) {
+                // This right here is the response we will receive before we convert
+                // it over to readable JSON
+                console.log("Response turning to readable JSON", response);
+                return response.json();
+            })
+            .then(function(response) {
+                // Don't worry if this says "false", it just returns that when the user already exists from flasks end
+                // Once it reaches here, the async is already successful
+                console.log("Successful async: ");
+                //redirect to success page
+
+            })
+            .catch(function(error) {
+                console.log("Error in async", error);
+            });
+        }
+    </script>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"> </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <pre>
+        <div class="modal-body" type="body">
+                <!-- <input type="text" name="lyrics" id="lyrics" value=""/> -->
+        </div>
+        </pre>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+<!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalScrollableTitle">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <input type="text" name="lyrics" id="lyrics" value=""/>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+<!-- Modal -->
+
+      
+
+{% for track_id in track_ids %}
+<div class="frame-container">
+    {% set spotify_track_id = track_id %}
+    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" data-bs-whatever="@fat">Open modal for @fat</button> -->
+    <button type = "button" class="iframe-button btn btn-primary" data-id ="{{spotify_track_id}}" data-bs-toggle="modal" href="#myModal">
+       Lyrics
+    </button>
+    <!-- <button class="iframe-button" id ="{{spotify_track_id}}" onclick = 'buttonClicked(id)'> </button> -->
+    <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#exampleModal">Open Modal</button> -->
+
+ <!--  <input type="iframe-button" class="'iframe-button" onclick="buttonClicked()" value='Lyrics'> -->
+    <iframe class="test3" style="border-radius:12px" src="https://open.spotify.com/embed/track/{{ track_id }}?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
+    </iframe>
+</div>
+{% endfor %}
+
+<script>
+// $('#myModal').on('show.bs.modal', function (event, callback) {
+//     // var button = $(event.relatedTarget) // Button that triggered the modal
+//     // var recipient = button.data('whatever') // Extract info from data-* attributes
+//   // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+//   // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+//     var button = $(event.relatedTarget)
+//     console.log('id: ', id)
+//     var id = button.data('id')
+//     var response = buttonClicked(id);
+//     var modal = $(this)
+//     modal.find('.modal-body').text(response)
+// })
+
+$(document).on("click", ".iframe-button", function () {
+     var id = $(this).data('id');
+     let formData = new FormData();
+     formData.append("id", id);
+            // alert(id);
+    fetch("/get-lyrics", {
+        method: "POST",
+        body: formData
+    })
+    .then(function(response) {
+          // This right here is the response we will receive before we convert
+          // it over to readable JSON
+        console.log("Response turning to readable JSON", response);
+        return response.json();
+    })
+    .then(function(response) {
+        // $(".modal-body #lyrics").val( response );
+        var modal = document.getElementById('myModal')
+        modal.querySelector(".modal-body").innerHTML = response[1];
+        modal.querySelector(".modal-title").innerHTML = response[0] + " Lyrics";
+        // $(".modal-body").val( response );
+    })
+    .catch(function(error) {
+          console.log("Error in async", error);
+    });
+});
+
+// function buttonClicked(id, callback) {
+//         let formData = new FormData();
+//         formData.append("id", id);
+//             // alert(id);
+//         fetch("/get-lyrics", {
+//             method: "POST",
+//             body: formData
+//         })
+//         // $('#myModal').modal('hide')
+//         .then(function(response) {
+//           // This right here is the response we will receive before we convert
+//           // it over to readable JSON
+          
+//           console.log("Response turning to readable JSON", response);
+//           return response.text();
+//         })
+//         // .then(function(response) {
+            
+//         //   // Don't worry if this says "false", it just returns that when the user already exists from flasks end
+//         //   // Once it reaches here, the async is already successful
+//         // //   console.log("Successful async:", response);
+        
+//         // // document.getElementById(modal).display = 'block';
+//         //     // alert(response);
+//         // })
+//         .catch(function(error) {
+//           console.log("Error in async", error);
+//         });
+//     };
+</script>
+
+<script>
+    console.log("script started"); // Log when script started
+    const downloadButton = document.getElementById("downloadButton");
+    downloadButton.addEventListener("click", function() {
+        downloadButton.className += " btn-warning"; // Change the button color to warning (yellow) during download
+        downloadButton.innerText = 'Downloading...';
+
+        console.log("Button clicked"); // Log when button is clicked
+        fetch("/download-songs", {
+            method: "POST",
+            headers: {
+              'Content-Type': 'application/json',
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Response received: ", data.message); // Log response received from server
+            downloadButton.className = "btn btn-primary inc250 but top-bottom-margin btn-success"; // Change the button color to success (green) after download
+            downloadButton.innerText = 'Download Complete';
+        })
+        .catch((error) => {
+            console.log("Error:", error); // Log any errors
+            downloadButton.className = "btn btn-primary inc250 but top-bottom-margin btn-danger"; // Change the button color to danger (red) if there's an error
+            downloadButton.innerText = 'Download Failed';
+        });
+    });
+</script>
+
+{% endblock %}
+    
+
+
+<br>
+<br>
+
+</body>
+</html>
