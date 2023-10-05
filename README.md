@@ -11,3 +11,7 @@ This program allows you to generate a new Spotify playlist based on related arti
 5. Click on the register tab and sign up, then sign in with your new account
 6. Click Generate Playlist and input your desired artist, your Spotify username, and the name of your new playlist
 7. You will be sent to a new page where you can see all the new songs in your playlist as well as a link to Spotify
+
+## Contributors
+- [Obiora Okeke](https://github.com/Obiora-Okeke)
+- [Anisha Paul](https://github.com/anisha60)
